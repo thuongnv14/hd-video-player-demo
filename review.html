@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HD Video Player 2.1 — Review guide</title>
+<style>
+  :root { --ink:#1b1f24; --muted:#5b6470; --line:#e3e7ec; --brand:#14866D; --soft:#f3f7f6; --warn:#fff6e5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:var(--ink); line-height:1.6; background:#fff; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 21px; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 17px; margin: 20px 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  .box { background: var(--soft); border-radius: 12px; padding: 14px 18px; margin: 14px 0; }
+  .note { background: var(--warn); border-radius: 12px; padding: 12px 16px; margin: 12px 0; }
+  ol li, ul li { margin: 4px 0; }
+  .step { display: grid; grid-template-columns: 1fr 220px; gap: 20px; align-items: start; }
+  .step img { width: 220px; border-radius: 14px; border: 1px solid var(--line); }
+  .expect { color: var(--brand); font-weight: 600; }
+  code, kbd { background: #eef1f4; border-radius: 6px; padding: 1px 6px; font-size: 0.95em; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; }
+  td, th { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); }
+  @media (max-width: 640px) { .step { grid-template-columns: 1fr; } .step img { width: 70%; } }
+</style>
+</head>
+<body>
+<main>
+<h1>HD Video Player 2.1 — Review guide</h1>
+<p class="sub">Package <code>tool.video.hdmaxvideoplayer</code> · version 2.1.0 (16) · developer Nguyen Thi Hang ·
+<a href="mailto:thuong.tin.3a@gmail.com">thuong.tin.3a@gmail.com</a></p>
+
+<div class="box">
+<b>What is new since version 2.0.0 (15).</b> The previous version was returned under guideline 4.1 because its features
+were hard to find inside the player. Version 2.1 adds three separate tools, each with its own tab in the bottom bar, and
+ships sample content so every tool can be tried in a few minutes without your own videos:
+<ol>
+  <li><b>AI subtitles</b> — speech to subtitles on the device, search what was said, jump to that second, export SRT.</li>
+  <li><b>Private</b> — a folder locked with a 6-digit PIN that keeps encrypted copies of videos.</li>
+  <li><b>Links</b> — play MP4 and HLS (m3u8) links with history and resume.</li>
+</ol>
+The original player and library (tab <b>Videos</b>) are unchanged.
+</div>
+
+<h2>Before you start</h2>
+<ul>
+  <li>No account, no sign-in, no purchase. Everything can be tested on a clean device.</li>
+  <li>On first launch the app shows a privacy notice and asks whether to send optional crash reports. Either answer is fine.
+      A short guide follows; tap <b>Skip</b> or open any tool from it.</li>
+  <li>Access to videos on the device is optional. If you deny it, the three new tabs still work with the sample content.</li>
+  <li>A network connection is needed only for two things: the one-time download of the speech model (step 1b) and the
+      Links tab (step 3). Everything else works offline.</li>
+</ul>
+
+<h2>1. AI subtitles</h2>
+<h3>1a. Search what was said (works offline, no download)</h3>
+<div class="step"><div>
+<ol>
+  <li>Tap the <b>AI subtitles</b> tab.</li>
+  <li>Tap <b>Sample video (English)</b>. Its subtitles are included with the app so this step works before any download.</li>
+  <li>Type <kbd>subtitles</kbd> in <b>Search lines in this subtitle</b>.</li>
+  <li>Tap any result.</li>
+</ol>
+<p class="expect">Expected: three matching lines with their times; tapping a line opens the player at that second.</p>
+<p>Also available here: <b>Export SRT</b> (saves a standard subtitle file where you choose), <b>Import SRT</b> and
+<b>Delete subtitle</b> (never deletes the video).</p>
+</div><img src="img/02_subtitle_search.jpg" alt="Subtitle search"></div>
+
+<h3>1b. Create subtitles with on-device AI</h3>
+<div class="step"><div>
+<ol>
+  <li>In the <b>AI subtitles</b> tab, expand <b>Generate AI subtitles from demo video</b>.</li>
+  <li>Tap <b>Download model</b>. The speech model (about 99 MB) is downloaded <b>once</b> from huggingface.co and kept on
+      the device. Depending on the network this takes 10 seconds to a few minutes; the line above the buttons shows
+      “installed: 99 MB” when it is ready.</li>
+  <li>Tap <b>Generate from demo</b>. Recognition runs on the device for about 10–40 seconds.</li>
+</ol>
+<p class="expect">Expected: a new entry “Sample video (English) · On-device AI” with the recognised lines and their times.</p>
+<div class="note">If <b>Generate from demo</b> seems to do nothing, the model is not downloaded yet: please tap
+<b>Download model</b> first and wait for “installed: 99 MB”. The sample uses a synthetic voice, so a few words may differ
+from the included reference subtitles; real human speech is usually recognised more accurately.</div>
+<p><b>With your own video:</b> tab <b>Videos</b> → open a video with speech → subtitles icon (top right) →
+<b>AI subtitles</b> → choose the spoken language → <b>Create subtitles</b>. The subtitles appear on the video and are saved
+in the AI subtitles tab. Videos and audio are never uploaded. Three AI uses are free each day; an optional rewarded ad
+gives one more.</p>
+</div><img src="img/01_ai_player.jpg" alt="AI subtitles on a video"></div>
+
+<h2>2. Private folder</h2>
+<div class="step"><div>
+<ol>
+  <li>Tap the <b>Private</b> tab.</li>
+  <li>Enter any 6-digit PIN twice and tap <b>Create and unlock</b>.</li>
+  <li>Tap <b>Import sample video</b> and <b>Confirm</b> (or <b>Add video from device</b> to pick one of your videos).</li>
+  <li>Tap <b>Play</b> on the item, then go back.</li>
+  <li>Leave the app (Home) and return.</li>
+</ol>
+<p class="expect">Expected: the item is listed with its size and date; after leaving the app the folder is locked and asks
+for the PIN again.</p>
+<div class="note"><b>Screenshots and screen recordings are blocked while the private folder is open.</b> This is
+intentional, to protect private videos, so a recording of this step may show a black screen. Five wrong PINs in a row
+pause attempts for 30 seconds. “Forgot PIN / reset vault” erases only the folder, never other videos.</div>
+</div><img src="img/04_private.jpg" alt="Private folder"></div>
+
+<h2>3. Links (network playback)</h2>
+<div class="step"><div>
+<ol>
+  <li>Tap the <b>Links</b> tab.</li>
+  <li>Under <b>Try a sample video</b>, tap <b>Sample MP4 video</b> or <b>Sample HLS (m3u8) video</b>.</li>
+  <li>Close the video with ✕.</li>
+  <li>Tap the entry under <b>History</b>.</li>
+</ol>
+<p class="expect">Expected: the sample plays and can be seeked; after closing, it is listed in History and resumes from
+the saved position.</p>
+<p>You can also paste any MP4 or m3u8 address and tap <b>Play URL</b>. Unencrypted HTTP links ask for confirmation first.
+History can be turned off or cleared. The samples are hosted at
+<a href="https://thuongnv14.github.io/hd-video-player-demo/">thuongnv14.github.io/hd-video-player-demo</a>.</p>
+</div><img src="img/05_links.jpg" alt="Links tab"></div>
+
+<h2>4. Videos (player and library)</h2>
+<div class="step"><div>
+<p>With access to videos allowed: browse all videos or by folder, search, sort, favourites, resume where you stopped,
+auto-play next, background audio, sleep timer, picture-in-picture, speed 0.25×–4×, gestures for brightness, volume and
+seeking, audio track choice, built-in MKV/MP4 subtitle tracks and frame capture.</p>
+</div><img src="img/03_library.jpg" alt="Library"></div>
+
+<h2>Ads and privacy</h2>
+<table>
+  <tr><th>Ads</th><td>Non-personalised Huawei Petal Ads: a banner on the main tabs (not on Private), a full-screen ad at
+  most once every 2 minutes and only after a video is closed, and an optional rewarded ad for an extra AI use. No ad is
+  shown during playback, picture-in-picture or PIN entry. Ads may not appear before the app is published.</td></tr>
+  <tr><th>Data</th><td>Videos, subtitles, the private folder and link history stay on the device. Optional crash reports
+  (Sentry) are sent only after consent and never include content, file names, links or the PIN.</td></tr>
+  <tr><th>Privacy policy</th><td><a href="https://nguyenthihang68.blogspot.com/2026/11/hd-video-player-privacy-policy.html">nguyenthihang68.blogspot.com/…/hd-video-player-privacy-policy.html</a></td></tr>
+  <tr><th>Permissions</th><td>Videos/storage (library), notifications and media playback service (background audio),
+  internet (ads, model download, links). No location, contacts, camera, microphone or phone access.</td></tr>
+</table>
+
+<p>Questions during review: <a href="mailto:thuong.tin.3a@gmail.com">thuong.tin.3a@gmail.com</a>. Thank you for
+reviewing HD Video Player.</p>
+</main>
+</body>
+</html>
