@@ -19,4 +19,12 @@ segment_005.ts
 segment_006.ts
 #EXTINF:4.000000,
 segment_007.ts
+#EXTINF:4.000000,
+segment_008.ts
+#EXTINF:4.000000,
+segment_009.ts
+#EXTINF:4.000000,
+segment_010.ts
+#EXTINF:3.200000,
+segment_011.ts
 #EXT-X-ENDLIST
